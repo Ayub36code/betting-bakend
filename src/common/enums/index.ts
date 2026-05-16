@@ -1,0 +1,52 @@
+// src/common/enums/index.ts
+export enum BetStatus {
+  PENDING = 'PENDING',
+  ACCEPTED = 'ACCEPTED',
+  REJECTED = 'REJECTED',
+  WON = 'WON',
+  LOST = 'LOST',
+  VOID = 'VOID',
+  CASHED_OUT = 'CASHED_OUT',
+  CANCELLED = 'CANCELLED',
+  SUSPENDED = 'SUSPENDED',
+}
+
+export enum BetType {
+  SINGLE = 'SINGLE',
+  MULTI = 'MULTI',
+  SYSTEM = 'SYSTEM',
+}
+
+export enum TransactionType {
+  DEPOSIT = 'DEPOSIT',
+  WITHDRAWAL = 'WITHDRAWAL',
+  BET_PLACEMENT = 'BET_PLACEMENT',
+  BET_WIN = 'BET_WIN',
+  BET_REFUND = 'BET_REFUND',
+  CASHOUT = 'CASHOUT',
+  BONUS = 'BONUS',
+  ADJUSTMENT = 'ADJUSTMENT',
+  ROLLBACK = 'ROLLBACK',
+}
+
+export enum MarketStatus {
+  OPEN = 'OPEN',
+  SUSPENDED = 'SUSPENDED',
+  CLOSED = 'CLOSED',
+  SETTLED = 'SETTLED',
+  CANCELLED = 'CANCELLED',
+}
+
+export enum OddsFormat {
+  DECIMAL = 'DECIMAL',
+  FRACTIONAL = 'FRACTIONAL',
+  AMERICAN = 'AMERICAN',
+}
+
+export enum EventStatus {
+  UPCOMING = 'UPCOMING',
+  LIVE = 'LIVE',
+  FINISHED = 'FINISHED',
+  CANCELLED = 'CANCELLED',
+  POSTPONED = 'POSTPONED',
+}

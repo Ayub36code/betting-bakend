@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2021",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@auth/*": ["src/auth/*"],
+      "@user/*": ["src/user/*"],
+      "@wallet/*": ["src/wallet/*"],
+      "@bet/*": ["src/bet/*"],
+      "@odds/*": ["src/odds/*"],
+      "@market/*": ["src/market/*"],
+      "@common/*": ["src/common/*"],
+      "@prisma/*": ["src/prisma/*"],
+      "@redis/*": ["src/redis/*"]
+    }
+  }
+}

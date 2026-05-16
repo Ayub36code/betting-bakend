@@ -1,0 +1,587 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type AccumulatorOddsResponse {
+  combinedOdds: Float!
+  impliedProbability: Float!
+}
+
+type AuditLogListResponse {
+  data: [AuditLogType!]!
+  page: Int!
+  total: Int!
+  totalPages: Int!
+}
+
+type AuditLogType {
+  action: String!
+  createdAt: DateTime!
+  id: String!
+  ipAddress: String
+  resource: String!
+  resourceId: String
+  userId: String
+}
+
+type AuthResponse {
+  accessToken: String!
+  refreshToken: String!
+  user: UserType!
+}
+
+type BalanceResponse {
+  availableBalance: Float!
+  balance: Float!
+  bonusBalance: Float!
+  currency: String!
+  reservedBalance: Float!
+}
+
+type BetListResponse {
+  data: [BetType2!]!
+  page: Int!
+  total: Int!
+  totalPages: Int!
+}
+
+type BetSelectionType {
+  betId: String!
+  eventId: String!
+  id: ID!
+  isSettled: Boolean!
+  isWinner: Boolean
+  marketId: String!
+  odds: Float!
+  selection: SelectionType
+  selectionId: String!
+}
+
+type BetStats {
+  open: Int!
+  today: Int!
+}
+
+enum BetStatus {
+  ACCEPTED
+  CANCELLED
+  CASHED_OUT
+  LOST
+  PENDING
+  REJECTED
+  SUSPENDED
+  VOID
+  WON
+}
+
+enum BetType {
+  MULTI
+  SINGLE
+  SYSTEM
+}
+
+type BetType2 {
+  actualWin: Float
+  betRef: String!
+  bookingCode: String
+  cashoutValue: Float
+  createdAt: DateTime!
+  id: ID!
+  potentialWin: Float!
+  selections: [BetSelectionType!]!
+  settledAt: DateTime
+  stake: Float!
+  status: BetStatus!
+  totalOdds: Float!
+  type: BetType!
+  updatedAt: DateTime!
+  userId: String!
+  voidReason: String
+  voidedAt: DateTime
+}
+
+enum BetTypeEnum {
+  MULTI
+  SINGLE
+  SYSTEM
+}
+
+type BettingStats {
+  lostBets: Float!
+  totalBets: Float!
+  totalStaked: Float!
+  totalWon: Float!
+  winRate: String!
+  wonBets: Float!
+}
+
+type BookingListResponse {
+  data: [BookingType!]!
+  page: Float!
+  total: Float!
+  totalPages: Float!
+}
+
+type BookingSelectionType {
+  currentOdds: Float
+  eventId: String!
+  eventName: String!
+  isAvailable: Boolean
+  marketId: String!
+  marketName: String!
+  odds: Float!
+  oddsChanged: Boolean
+  selectionId: String!
+  selectionName: String!
+}
+
+type BookingType {
+  allAvailable: Boolean
+  code: String!
+  createdAt: DateTime!
+  currentTotalOdds: Float
+  expiresAt: DateTime!
+  id: ID!
+  isExpired: Boolean!
+  oddsChanged: Boolean
+  selections: [BookingSelectionType!]!
+  totalOdds: Float!
+  userId: String
+}
+
+type CashoutHistoryResponse {
+  data: [CashoutRecord!]!
+  page: Float!
+  total: Float!
+  totalPages: Float!
+}
+
+type CashoutRecord {
+  amount: Float!
+  betId: String!
+  createdAt: DateTime!
+  id: ID!
+  isPartial: Boolean!
+  oddsAtCashout: Float!
+  partialStake: Float
+  remainingStake: Float
+  status: String!
+  userId: String!
+}
+
+type CashoutResult {
+  cashoutAmount: Float!
+  isPartial: Boolean!
+}
+
+type CashoutValueResponse {
+  eligible: Boolean!
+  originalStake: Float
+  potentialWin: Float
+  reason: String
+  value: Float!
+}
+
+input CreateEventInput {
+  awayTeam: String
+  homeTeam: String
+  name: String!
+  slug: String
+  sportId: String!
+  startTime: DateTime!
+}
+
+input CreateMarketInput {
+  cutoffTime: DateTime
+  eventId: String!
+  maxBetAmount: Float
+  maxExposure: Float
+  minBetAmount: Float
+  name: String!
+  selections: [SelectionInput!]!
+  type: String!
+}
+
+type DashboardStatsType {
+  bets: BetStats!
+  events: EventStats!
+  financials: FinancialStats!
+  markets: MarketStats!
+  pendingWithdrawals: Int!
+  users: UserStats!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type EventListResponse {
+  data: [EventType!]!
+  page: Float!
+  total: Float!
+  totalPages: Float!
+}
+
+type EventStats {
+  live: Int!
+}
+
+enum EventStatus {
+  CANCELLED
+  FINISHED
+  LIVE
+  POSTPONED
+  UPCOMING
+}
+
+type EventType {
+  awayTeam: String
+  createdAt: DateTime!
+  endTime: DateTime
+  homeTeam: String
+  id: ID!
+  isLive: Boolean!
+  markets: [MarketType!]
+  name: String!
+  slug: String!
+  sport: SportType
+  sportId: String!
+  startTime: DateTime!
+  status: EventStatus!
+  streamUrl: String
+  updatedAt: DateTime!
+}
+
+type ExposureReportItem {
+  currentExposure: Float!
+  exposurePercentage: String!
+  id: String!
+  maxExposure: Float!
+  name: String!
+}
+
+type FinancialStats {
+  ggr: Float!
+  ggrMargin: String!
+  stakedToday: Float!
+  wonToday: Float!
+}
+
+type FlaggedUsersResponse {
+  data: [RiskProfileType!]!
+  page: Float!
+  total: Float!
+  totalPages: Float!
+}
+
+type LedgerResponse {
+  data: [TransactionType2!]!
+  page: Float!
+  total: Float!
+  totalPages: Float!
+}
+
+input LoginInput {
+  identifier: String!
+  password: String!
+}
+
+type LogoutResponse {
+  message: String!
+  success: Boolean!
+}
+
+type MarketStats {
+  open: Int!
+}
+
+enum MarketStatus {
+  CANCELLED
+  CLOSED
+  OPEN
+  SETTLED
+  SUSPENDED
+}
+
+type MarketType {
+  createdAt: DateTime!
+  currentExposure: Float!
+  cutoffTime: DateTime
+  eventId: String!
+  id: ID!
+  isSuspended: Boolean!
+  maxBetAmount: Float!
+  maxExposure: Float!
+  minBetAmount: Float!
+  name: String!
+  selections: [SelectionType!]!
+  status: MarketStatus!
+  suspendedReason: String
+  type: String!
+  updatedAt: DateTime!
+}
+
+type Mutation {
+  adminDeposit(amount: Float!, reference: String!, userId: String!): TransactionType2!
+  adminRollbackTransaction(reason: String!, transactionId: String!): TransactionType2!
+  adminSetSystemConfig(category: String! = "GENERAL", key: String!, value: String!): SystemConfigType!
+  adminSettleBet(betId: String!): BetType2!
+  adminSettleBetsByMarket(marketId: String!): SettlementResult!
+  adminToggleUserActive(isActive: Boolean!, userId: String!): UserType!
+  cancelBet(betId: String!): BetType2!
+  cashout(betId: String!): CashoutResult!
+  clearReviewFlag(userId: String!): Boolean!
+  createBookingCode(selectionIds: [String!]!): BookingType!
+  createEvent(input: CreateEventInput!): EventType!
+  createMarket(input: CreateMarketInput!): MarketType!
+  flagUserForReview(reason: String!, userId: String!): Boolean!
+  login(input: LoginInput!): AuthResponse!
+  logout: LogoutResponse!
+  partialCashout(betId: String!, percentage: Int!): CashoutResult!
+  placeBet(input: PlaceBetInput!): BetType2!
+  refreshToken(refreshToken: String!): TokenResponse!
+  register(input: RegisterInput!): AuthResponse!
+  resumeMarket(marketId: String!): MarketType!
+  selfExclude(days: Int!): UserType!
+  settleMarket(marketId: String!, winnerSelectionId: String!): MarketType!
+  suspendMarket(marketId: String!, reason: String): MarketType!
+  suspendSelections(isSuspended: Boolean!, selectionIds: [String!]!): Boolean!
+  updateEventStatus(id: String!, isLive: Boolean, status: EventStatus!): EventType!
+  updateOdds(newOdds: Float!, reason: String, selectionId: String!): OddsUpdateResponse!
+  updateProfile(input: UpdateProfileInput!): UserType!
+  updateScore(awayScore: Int!, eventId: String!, homeScore: Int!): EventType!
+  withdraw(amount: Float!): TransactionType2!
+}
+
+enum OddsChangePolicyEnum {
+  ACCEPT_ANY
+  ACCEPT_BETTER
+  REJECT
+}
+
+type OddsConversionResponse {
+  american: Float!
+  decimal: Float!
+  fractional: String!
+}
+
+type OddsHistoryType {
+  changedBy: String
+  createdAt: DateTime!
+  id: ID!
+  newOdds: Float!
+  oldOdds: Float!
+  reason: String
+  selectionId: String!
+}
+
+type OddsUpdateResponse {
+  newOdds: Float!
+  oldOdds: Float!
+  selectionId: ID!
+}
+
+input PlaceBetInput {
+  betType: BetTypeEnum! = SINGLE
+  note: String
+  oddsChangePolicy: OddsChangePolicyEnum
+  selectionIds: [String!]!
+  stake: Float!
+  systemSize: Float
+}
+
+type Query {
+  adminAuditLogs(limit: Int! = 50, page: Int! = 1, resource: String, userId: String): AuditLogListResponse!
+  adminBets(limit: Int! = 20, page: Int! = 1, status: BetStatus, userId: String): BetListResponse!
+  adminDashboard: DashboardStatsType!
+  adminExposureReport: [ExposureReportItem!]!
+  adminListUsers(limit: Int! = 20, page: Int! = 1, search: String): UserListResponse!
+  adminSystemConfigs(category: String): [SystemConfigType!]!
+  adminUserTransactions(limit: Int! = 20, page: Int! = 1, userId: String!): LedgerResponse!
+  betByRef(betRef: String!): BetType2!
+  calculateAccumulatorOdds(odds: [Float!]!): AccumulatorOddsResponse!
+  cashoutValue(betId: String!): CashoutValueResponse!
+  convertOdds(from: String! = "DECIMAL", odds: Float!, to: String! = "DECIMAL"): OddsConversionResponse!
+  event(id: String!): EventType!
+  events(isLive: Boolean, limit: Int! = 20, page: Int! = 1, sportId: String, status: EventStatus): EventListResponse!
+  flaggedUsers(limit: Int! = 20, page: Int! = 1): FlaggedUsersResponse!
+  loadBookingCode(code: String!): BookingType!
+  market(id: String!): MarketType!
+  me: Boolean!
+  myBalance: BalanceResponse!
+  myBet(betId: String!): BetType2!
+  myBets(limit: Int! = 20, page: Int! = 1, status: BetStatus): BetListResponse!
+  myBettingStats: BettingStats!
+  myBookings(limit: Int! = 20, page: Int! = 1): BookingListResponse!
+  myCashouts(limit: Int! = 20, page: Int! = 1): CashoutHistoryResponse!
+  myProfile: UserType!
+  myRiskProfile: RiskProfileType!
+  myTransactions(limit: Int! = 20, page: Int! = 1, type: TransactionType): LedgerResponse!
+  myWallet: WalletType!
+  oddsHistory(limit: Int! = 20, selectionId: String!): [OddsHistoryType!]!
+  sports: [SportType!]!
+}
+
+input RegisterInput {
+  country: String
+  email: String!
+  firstName: String
+  lastName: String
+  password: String!
+  phoneNumber: String
+  username: String!
+}
+
+type RiskProfileType {
+  flaggedForReview: Boolean!
+  id: ID!
+  lastUpdated: DateTime!
+  reviewReason: String
+  riskScore: Float!
+  totalBets: Float!
+  totalStaked: Float!
+  totalWon: Float!
+  userId: String!
+  winRate: Float!
+}
+
+enum Role {
+  ADMIN
+  OPERATOR
+  SUPER_ADMIN
+  USER
+}
+
+input SelectionInput {
+  code: String
+  name: String!
+  odds: Float!
+}
+
+type SelectionType {
+  code: String
+  createdAt: DateTime!
+  id: ID!
+  isSuspended: Boolean!
+  isWinner: Boolean
+  marketId: String!
+  name: String!
+  odds: Float!
+  runnerNumber: Float
+  updatedAt: DateTime!
+}
+
+type SettlementResult {
+  failed: Int!
+  settled: Int!
+  total: Int!
+}
+
+type SportType {
+  icon: String
+  id: ID!
+  isActive: Boolean!
+  name: String!
+  slug: String!
+}
+
+type Subscription {
+  betPlaced: BetType2!
+  betSettled: BetType2!
+  eventUpdated: EventType!
+  oddsUpdated(selectionId: String): OddsUpdateResponse!
+  scoreUpdated: EventType!
+}
+
+type SystemConfigType {
+  category: String!
+  createdAt: DateTime!
+  id: String!
+  key: String!
+  updatedAt: DateTime!
+  updatedBy: String
+}
+
+type TokenResponse {
+  accessToken: String!
+  refreshToken: String!
+}
+
+enum TransactionStatus {
+  COMPLETED
+  FAILED
+  PENDING
+  ROLLED_BACK
+}
+
+enum TransactionType {
+  ADJUSTMENT
+  BET_PLACEMENT
+  BET_REFUND
+  BET_WIN
+  BONUS
+  CASHOUT
+  DEPOSIT
+  ROLLBACK
+  WITHDRAWAL
+}
+
+type TransactionType2 {
+  amount: Float!
+  balanceAfter: Float!
+  balanceBefore: Float!
+  createdAt: DateTime!
+  description: String
+  id: ID!
+  referenceId: String
+  status: TransactionStatus!
+  type: TransactionType!
+  userId: String!
+}
+
+input UpdateProfileInput {
+  firstName: String
+  lastName: String
+  phoneNumber: String
+  timezone: String
+}
+
+type UserListResponse {
+  data: [UserType!]!
+  page: Float!
+  total: Float!
+  totalPages: Float!
+}
+
+type UserStats {
+  active: Int!
+  total: Int!
+}
+
+type UserType {
+  country: String
+  createdAt: DateTime!
+  email: String!
+  firstName: String
+  id: ID!
+  isActive: Boolean!
+  isVerified: Boolean!
+  kycVerified: Boolean!
+  lastLoginAt: DateTime
+  lastName: String
+  phoneNumber: String
+  role: Role!
+  updatedAt: DateTime!
+  username: String!
+}
+
+type WalletType {
+  balance: Float!
+  bonusBalance: Float!
+  createdAt: DateTime!
+  currency: String!
+  id: ID!
+  reservedBalance: Float!
+  userId: String!
+}
